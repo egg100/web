@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_table.html</title>
+</head>
+<body>
+    <section>
+        <article>
+            <table border="1">
+                <tr>
+                    <td>이름</td>
+                    <td>홍길동</td>
+                </tr>
+                <tr>
+                    <td>나이</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>취미</td>
+                    <td>독서</td>
+                </tr>
+            </table>
+            <br>
+            <table border="1">
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>취미</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">홍길동</td>
+                    <td colspan="2">20/독서</td>
+                    <!-- <td>독서</td> -->
+                </tr>
+                <tr>
+                    <!-- <td>김길동</td> -->
+                    <td>21</td>
+                    <td>운동</td>
+                </tr>
+            </table>            
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <br>
+            <table border="1">
+                <caption>span 연습</caption>
+                <tr>
+                    <th rowspan="2">학생</th>
+                    <th>국어</th>
+                    <th>영어</th>
+                </tr>
+                <tr>
+                    <th colspan="2" align="center">평가</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">홍길동</td>
+                    <td>80</td>
+                    <td>89</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">Good</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">김민수</td>
+                    <td>93</td>
+                    <td>95</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">Best</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+</body>
+</html>
