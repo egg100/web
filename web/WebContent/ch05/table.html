@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+    <table border="1" id="tbl" style="border-collapse: collapse;">
+    </table>
+    </form>
+    <script>
+        let tableTag = document.getElementById("tbl");
+        let trTag = document.createElement("tr");
+        let tdTag = document.createElement("td");
+        let text = document.createTextNode("아이디:");
+        tableTag.appendChild(trTag);
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(text);
+
+        tdTag = document.createElement("td");
+        let inputTag = document.createElement("input");
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(inputTag);
+        inputTag.setAttribute("size", "10");
+        inputTag.value = "홍길동";
+        
+        trTag = document.createElement("tr");
+        tdTag = document.createElement("td");
+        text = document.createTextNode("비밀번호:");
+        tableTag.appendChild(trTag);
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(text);
+        
+        tdTag = document.createElement("td");
+        inputTag = document.createElement("input");
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(inputTag);
+        inputTag.setAttribute("size", "10");
+        inputTag.type = "password";
+
+        trTag = document.createElement("tr");
+        tdTag = document.createElement("td");
+        let btn = document.createElement("button");
+        tableTag.appendChild(trTag);
+        trTag.appendChild(tdTag);
+        tdTag.setAttribute("colspan", "2");
+        tdTag.setAttribute("align", "center");
+        tdTag.appendChild(btn);
+        btn.textContent = "제출";
+        btn.type = "submit";
+        btn.style = "margin: 0px 10px";
+        btn = document.createElement("button");
+        tdTag.appendChild(btn);
+        btn.textContent = "다시작성";
+        btn.type = "reset";
+        btn.style = "margin: 0px 10px";
+
+        // tdTag = document.createElement("td");
+        // trTag.appendChild(tdTag);
+        
+    </script>
+</body>
+</html>

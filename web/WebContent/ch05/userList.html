@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="bdy">
+    <h3>회원 리스트</h3>
+    <!-- <table border="1" id="userList">
+        <tr>
+            <th>이름</th>
+            <th>비밀번호</th>
+        </tr>
+    </table> -->
+    <script>
+        let userList = [
+            ["홍길동", "1234"],
+            ["김길동", "2345"],
+            ["박민수", "6745"],
+            ["김민수", "5643"]
+        ];
+
+        let body = document.getElementById("bdy");
+        let tbl = document.createElement("table");
+        tbl.setAttribute("border", "1");
+        body.appendChild(tbl);
+        let trTag;
+        let tdTag;
+        let text;
+        // tr에 데이터.
+        for(let i = 0; i < userList.length; i++) {
+            trTag = document.createElement("tr");
+
+            for(let j = 0; j < userList[0].length; j++) {
+                tdTag = document.createElement("td");
+                text = document.createTextNode(userList[i][j]);
+                trTag.appendChild(tdTag);
+                tdTag.appendChild(text);
+            }
+            
+            tbl.appendChild(trTag);
+            
+            console.log("이름=>", userList[i][0],",비번=>",userList[i][1]);
+        }
+    </script>
+</body>
+</html>

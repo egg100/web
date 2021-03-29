@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch05/list.html</title>
+</head>
+<body>
+    <ul>Fruits
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Melon</li>
+    </ul>
+
+    <ul id="fruit"></ul>
+    <script>
+        let liTag = document.createElement("li"); // tag 생성
+        let text = document.createTextNode("Apple"); // 텍스트값을 생성.
+        liTag.appendChild(text);
+        let ulTag = document.getElementById("fruit");
+        ulTag.appendChild(liTag);
+        liTag = document.createElement("li");
+        text = document.createTextNode("Banana");
+        liTag.appendChild(text);
+        ulTag.appendChild(liTag);
+        liTag = document.createElement("li");
+        text = document.createTextNode("Melon");
+        liTag.appendChild(text);
+        ulTag.appendChild(liTag);
+
+        liTag = document.createElement("li");
+        let btn = document.createElement("button");
+        btn.textContent = "버튼";
+        liTag.appendChild(btn);
+        ulTag.appendChild(liTag);
+
+    </script>
+</body>
+</html>

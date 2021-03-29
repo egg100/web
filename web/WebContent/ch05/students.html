@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="bdy">
+    <script>
+        let scores = [
+            ["홍길동", 80],
+            ["김민수", 85],
+            ["박민규", 90]
+        ];
+
+        let bdy = document.getElementById("bdy");
+        let tbl = document.createElement("table");
+        tbl.setAttribute("border", "1");
+        bdy.appendChild(tbl);
+        let trTag = document.createElement("tr");
+        let tdTag = document.createElement("td");
+        let text =  document.createTextNode("이름");
+        tbl.appendChild(trTag);
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(text);
+
+        tdTag = document.createElement("td");
+        text =  document.createTextNode("성적");
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(text);
+        
+        let sum = 0;
+        for(let i = 0; i < scores.length; i++) {
+            trTag = document.createElement("tr");
+            sum += scores[i][1];
+            for(let j = 0; j < scores[0].length; j++) {
+                tdTag = document.createElement("td");
+                text = document.createTextNode(scores[i][j]);
+                trTag.appendChild(tdTag);
+                tdTag.appendChild(text);
+            }
+            tbl.appendChild(trTag);
+            // console.log("이름=>", scores[i][0],",비번=>",scores[i][1]);
+        }
+
+        trTag = document.createElement("tr");
+        tdTag = document.createElement("td");
+        text =  document.createTextNode("평균");
+        tbl.appendChild(trTag);
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(text);
+
+        tdTag = document.createElement("td");
+        text =  document.createTextNode(sum/scores.length);
+        trTag.appendChild(tdTag);
+        tdTag.appendChild(text);
+    </script>
+</body>
+</html>
