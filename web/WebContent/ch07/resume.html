@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { 
+            border: 1px solid #000;
+            padding: 80px;
+            width: 900px;
+        }
+        header {text-align: center;}
+        h1 {letter-spacing: 15px;}
+        caption {
+            text-align: left;
+            font-weight: bold;
+            letter-spacing: 6px;
+        }
+        table {
+            width: 900px;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        tr>th:first-child {
+            width: 25%;
+        }
+        th {
+            background-color: rgb(222, 232, 248);
+            height: 30px;
+            border: rgb(193, 210, 236) 2px solid;
+        }
+        td {
+            height: 30px;
+            border: rgb(193, 210, 236) 2px solid;
+        }
+        table.half {
+            display: inline;
+            border: 0px;
+        }
+        table.half th {
+            width: 216px;
+        }
+        table.t1 th {
+            width: 20%;
+        }
+        table.t1 td {
+            width: 30%;
+        } 
+        table.tt th {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>입사지원서</h1>
+    </header>
+    <table class="t1">
+        <tr>
+            <th>지원분야</th>
+            <td></td>
+            <th>희망연봉</th>
+            <td style="padding-left: 150px;">만원</td>
+        </tr>
+    </table>
+
+    <table class="t1">
+        <tr>
+            <th>이름</th>
+            <td></td>
+            <th>생년월일</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>핸드폰</th>
+            <td></td>
+            <th>이메일</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td colspan="3"></td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>학력사항</caption>
+        <tr>
+            <th style="height: 40px;">기간</th>
+            <th>학력사항</th>
+            <th>전공</th>
+            <th>힉점</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>주요이력</caption>
+        <tr>
+            <th>기간</th>
+            <th style="width: 15%;">구분</th>
+            <th>기관및업무내용</th>
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <th style="background-color: white;">경력사항</th>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <th style="background-color: white;">경력사항</th>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>참여프로젝트</caption>
+        <tr>
+            <th>프로젝트기간</th>
+            <th>프로젝트명</th>
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+    
+    <table class="tt">
+        <caption>해외연수및해외경험</caption>
+        <tr>
+            <th>기간</th>
+            <th>국가명</th>
+            <th>연수기관(학교)및단쳬</th>
+            <th>목적</th>
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+    </table>
+
+    <table class="half" style="margin-right: 10px;">
+       <caption>OA능력</caption> 
+       <tr>
+           <th>문서작성 (한글/MS-Word)</th>
+           <th>스프레드시트 (Excel)</th>           
+       </tr>
+       <tr>
+           <td></td>
+           <td></td>
+       </tr>
+       <tr>
+        <th>프리젠테이션 (PowerPoint)</th>
+        <th>인터넷 (정보검색/Outlook)</th>           
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+
+    <table class="half">
+        <caption>어학능력</caption> 
+        <tr>
+            <th>언어</th>
+            <th>회화능력</th>           
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+         <th>작문능력</th>
+         <th>독해능력</th>           
+     </tr>
+     <tr>
+         <td></td>
+         <td></td>
+     </tr>
+     </table>
+</body>
+</html>
