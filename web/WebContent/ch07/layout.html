@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            /* border: 1px solid gray; */
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        header.container {
+            background-color: bisque;
+            height: 10vh;
+            margin: 1%;
+        }
+        nav, section, aside {
+            background-color: greenyellow;
+            margin: 1%;
+            height: 50vh;
+        }
+        nav {
+            width: 23%;
+            /* height: 50vh; */
+            float: left;
+            
+        }
+        section {
+            width: 48%;
+            float: left;
+        }
+        section > header, section > article, section > footer {
+            background-color: rgb(211, 240, 178);
+            margin: 5% 1% 0%;
+        }
+        section > header {
+            height: 15%;
+        }
+        section > article {
+            height: 45%;
+        }
+        section > footer {
+            height: 15%;
+        }
+        aside {
+            width: 23%;
+            float: left;
+        }
+        footer.container {
+            background-color: orange;
+            height: 30px;
+            clear: left;
+            margin: 1%;
+        }
+        ul {
+            border-width: 0;
+        }
+        ul > li {
+            display: inline;
+            border-width: 0;
+        }
+        ul > li > a {
+            border-width: 0;
+        }
+        ol > li {
+            text-align: left;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <ul>
+            <li><a href="#">주제1</a></li>
+            <li><a href="#">주제2</a></li>
+            <li><a href="#">주제3</a></li>
+        </ul>
+    </header>
+    <nav>
+        <ol>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+        </ol>
+    </nav>
+    <section>
+        &lt;section&gt;
+        <header class="item">
+            &lt;header&gt;
+        </header>
+        <article>
+            &lt;article&gt;
+        </article>
+        <footer>
+            &lt;footer&gt;
+        </footer>
+    </section>
+    <aside>
+        &lt;aside&gt;
+    </aside>
+    <footer class="container">
+        &lt;footer&gt;
+    </footer>
+</body>
+</html>
