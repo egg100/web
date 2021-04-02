@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            width: 100%;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+        .container {
+            padding: 16px;
+        }
+        .avatar {
+            border-radius: 50%;
+        }
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>모달폼</h2>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button>
+    <div id="id01" class="modal">
+        <form action="" class="modal-content">
+            <div class="imgcontainer">
+                <span class="close" onclick="document.getElementById('id01').style.display='none'">&times;</span>
+                <img class="avatar" src="../images/avatar.png" width="30%" alt="">
+            </div>
+            <div class="container">
+                <label for="name"><b>이름</b></label>
+                <input type="text" placeholder="이름을 입력..." name="name" id="name" required>
+                <label for=""><b>비밀번호</b></label>
+                <input type="password" placeholder="비번을 입력..." name="pwd" required>
+                <button type="submit">로그인</button>
+                <label for="">
+                    <input type="checkbox">Remember me
+                </label>
+                <!-- <input type="radio" name="grade" id="grade1">
+                <label for="grade1">grade1</label>
+                <input type="radio" name="grade" id="grade2">
+                <label for="grade2">grade2</label> -->
+            </div>
+            <div class="container">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
+                    취소
+                </button>
+                <span>Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
