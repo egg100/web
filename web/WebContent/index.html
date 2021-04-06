@@ -1,13 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="kr">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="javascript/basic.js"></script>
+    <script src="javascript/variable.js"></script>
+    <script src="javascript/operator.js"></script>
+    <style>
+        div {
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+
+        p {
+            clear: left;
+        }
+    </style>
 </head>
 <body>
-	<h1>Wellcome...ParkSoyeon!!</h1>
-	<a href="http://192.168.0.35:8089/web/intro/myinfo.html">myinfo-dayeong?</a><p/>
-	<a href="http://192.168.0.82:8089/web/career/mycareer.html">mycareer-dahee</a><p/>
-	<p> 공백                ! 탭					!</p>
+    
+    <div id="show"></div>
+    <p />
+    <button id="btn" style="display: block;" onclick="changeColor()">Change Color</button>
+    <script>
+        let colors = ['red','blue','green'];
+
+        function changeColor() {
+            let show = document.getElementById('show');
+            show.style.backgroundColor = colors[1];
+            // let btn = document.getElementById('btn');
+
+        }
+    </script>
 </body>
 </html>

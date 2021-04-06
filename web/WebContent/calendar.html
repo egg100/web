@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td:nth-of-type(1), th:nth-of-type(1) {
+            color: red;
+        }
+        td:nth-of-type(7), th:nth-of-type(7) {
+            color: blue;
+        }
+    </style>
+    <script src="javascript/cal.js"></script>
+</head>
+
+<body>
+    <script>
+        // createCal();
+        createCalendar(2021, 1);
+        createCalendar(2021, 2);
+        createCalendar(2021, 3);
+        function createCalendar(year, month) {
+            // 2021년 4월
+            let today = new Date(year, month - 1);
+            let thisYear = today.getFullYear(); // 2021
+            let thisMonth = today.getMonth(); // 3(4월)
+            let thisDate = today.getDate(); // 6
+            let thisDay = today.getDay() // 0:일, 1:월, 2:화...
+
+            let lastDate = new Date(thisYear, thisMonth + 1, 0).getDate(); //0이면 지날달 마지막날
+            let firstDay = new Date(thisYear, thisMonth, 1).getDay(); //이번달 1일의 요일
+            let rest = 7 - (lastDate + firstDay) % 7;
+            let days = ["일", "월", "화", "수", "목", "금", "토"];
+
+            let calendarTag = '';
+
+            calendarTag += '<table border="1" style="border-collapse: collapse;">';
+            calendarTag += '<caption>' + year + '년 ' + month + '월</caption>';
+            calendarTag += '<tr>';
+            for (let i = 0; i < days.length; i++) {
+                calendarTag += '<th>' + days[i] + '</th>';
+            }
+            calendarTag += '</tr>';
+
+            for (let i = 0; i < lastDate + firstDay + rest; i++) {
+                if (i % 7 == 0) {
+                    calendarTag += '<tr>';
+                }
+                if (i < firstDay || i >= lastDate + firstDay) {
+                    calendarTag += '<td></td>';
+                } else if (thisDate == i - firstDay + 1) {
+                    calendarTag += '<td style="background-color:yellow;">' + (i - firstDay + 1) + '</td>';
+                } else {
+                    calendarTag += '<td>' + (i - firstDay + 1) + '</td>';
+                }
+                if (i % 7 == 6) {
+                    calendarTag += '</tr>';
+                }
+            }
+            calendarTag += '</table>';
+            document.write(calendarTag);
+        }
+    </script>
+</body>
+
+</html>
