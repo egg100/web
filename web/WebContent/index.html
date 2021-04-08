@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="kr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,73 +22,87 @@
         } */
     </style>
 </head>
-<body>
-    
+
+<body id="bdy">
     <div id="show"></div>
     <ul id="list"></ul>
     <ul id="members"></ul>
+    <table id="tbl" border="1"></table>
     <p />
-    <button id="btn" style="display: block;" onclick="changeColor()">Change Color</button>
+    <button id="btn" style="display: block;" onclick="changeColor()">색변경하기</button>
     <!-- <script src="javascript/object.js"></script> -->
-    <script src="javascript/object2.js"></script>
+    <!-- <script src="javascript/object2.js"></script>
     <script src="javascript/class.js"></script>
-    <script src="javascript/array.js"></script>
+    <script src="javascript/array.js"></script> -->
+    <!-- <script src="javascript/function.js"></script> -->
     <script>
-        // let str = 'Hello'; //new String();
-        // str.charAt(0);
-        // str.indexOf('a'); // 찾는 문자가 없으면 -1리턴
 
-        let t = "Hello Thank you good luck to you";
-        document.write("<br/>");
-        document.write(t.charAt(16),"<br/>");
-        document.write(t.indexOf("you"),"<br/>");
-        document.write(t.indexOf("you",16),"<br/>");
-        document.write(t.lastIndexOf("you"),"<br/>");
-        document.write(t.lastIndexOf("you",25),"<br/>");
-        document.write(t.match("luck"),"<br/>");
-        document.write(t.search("you"),"<br/>");
-        document.write(t.substr(21,4),"<br/>");
-        document.write(t.substring(6,12),"<br/>");
-        document.write(t.replace("you","me"),"<br/>");
-        document.write(t.toLowerCase(),"<br/>");
-        document.write(t.toUpperCase(),"<br/>");
-        document.write(t.length,"<br/>");
-        
-        let s = t.split(" ");
-        
-        document.write(s[0],"<br/>");
-        document.write(s[4],"<br/>");
+        let json = '[{"id":1,"first_name":"Pierrette","last_name":"McWhin","email":"pmcwhin0@theglobeandmail.com","gender":"Male","ip_address":"158.237.141.213"},{"id":2,"first_name":"Micah","last_name":"Krysztowczyk","email":"mkrysztowczyk1@meetup.com","gender":"Genderfluid","ip_address":"23.135.9.30"},{"id":3,"first_name":"Bernadina","last_name":"Knok","email":"bknok2@live.com","gender":"Bigender","ip_address":"127.94.34.111"},{"id":4,"first_name":"Lark","last_name":"Mcimmie","email":"lmcimmie3@apple.com","gender":"Non-binary","ip_address":"26.4.59.189"},{"id":5,"first_name":"Gabbie","last_name":"Von Salzberg","email":"gvonsalzberg4@whitehouse.gov","gender":"Genderqueer","ip_address":"31.136.56.227"}]';
 
-        let str = "A";
-        let tt = str.charCodeAt(0);
+        // let json = [
+        //     { id: 1, first_name: "Pierrette", last_name: "McWhin", email: "pmcwhin0@theglobeandmail.com", gender: "Male", ip_address: "158.237.141.213" },
+        //     { id: 2, first_name: "Micah", last_name: "Krysztowczyk", email: "mkrysztowczyk1@meetup.com", gender: "Genderfluid", ip_address: "23.135.9.30" },
+        //     { id: 3, first_name: "Bernadina", last_name: "Knok", email: "bknok2@live.com", gender: "Bigender", ip_address: "127.94.34.111" },
+        //     { id: 4, first_name: "Lark", last_name: "Mcimmie", email: "lmcimmie3@apple.com", gender: "Non-binary", ip_address: "26.4.59.189" },
+        //     { id: 5, first_name: "Gabbie", last_name: "Von Salzberg", email: "gvonsalzberg4@whitehouse.gov", gender: "Genderqueer", ip_address: "31.136.56.227" }];
 
-        document.write(tt,"<br/>");
-        document.write(String.fromCharCode(65),"<br/>");
-        
+        let data = JSON.parse(json);
+        function createTr(obj) {
 
-        function writeEmail() {
-            let userEmail = prompt("당신의 이메일 주소는?", "");
-            let arrUrl = [".co.kr", ".com", ".net", ".or.kr", ".go.kr"];
-    
-            let check1 = false;
-            let check2 = false;
-    
-            if(userEmail.indexOf("@") > 0) {check1 = true;}
-    
-            for(let i = 0; i < arrUrl.length; i++) {
-                if(userEmail.indexOf(arrUrl[i]) > 0) {
-                    check2 = true;
+            let trTag = document.createElement('tr');
+            trTag.onmouseover = function () {
+                this.style.backgroundColor = 'yellow';
+            }
+            trTag.onmouseout = function () {
+                this.style.backgroundColor = '';
+            }
+            let td = document.createElement('td');
+            let chk = document.createElement('input');
+            chk.setAttribute('type', 'checkbox');
+            td.appendChild(chk);
+            trTag.appendChild(td);
+
+            for (field in obj) {
+                if(field == "ip_address") {
+                    break;
                 }
+                let tdTag = document.createElement('td');
+                let text = document.createTextNode(obj[field]);
+                tdTag.appendChild(text);
+                trTag.appendChild(tdTag);
             }
-    
-            if(check1 && check2) {
-                document.write(userEmail);
-            } else {
-                alert("이메일 형식이 잘못되었습니다.");
-            }
+            td = document.createElement('td');
+            let btn = document.createElement('button');
+            btn.innerHTML = 'OK';
+            btn.onclick = clickFnc;
+            td.appendChild(btn);
+            trTag.appendChild(td);
+            return trTag;
         }
-        
-        console.log(this); //window 객체
+        let tbl = document.getElementById('tbl');
+
+        let tr = document.createElement('tr');
+        tbl.appendChild(tr);
+        for (field in data[0]) {
+            if(field == "ip_address") {
+                break;
+            }
+            let tdTag = document.createElement('td');
+            let text = document.createTextNode(field);
+            tdTag.appendChild(text);
+            tr.appendChild(tdTag);
+        }
+
+        data.forEach(function (val, idx, ary) {
+            let newTr = createTr(val);
+            tbl.appendChild(newTr);
+        });
+
+        function clickFnc() {
+            this.parentNode.parentNode.remove();
+        }
+
     </script>
 </body>
+
 </html>
