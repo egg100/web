@@ -47,6 +47,15 @@
         //     { id: 5, first_name: "Gabbie", last_name: "Von Salzberg", email: "gvonsalzberg4@whitehouse.gov", gender: "Genderqueer", ip_address: "31.136.56.227" }];
 
         let data = JSON.parse(json);
+
+        let titles = {
+            id: '아이디',
+            first_name: '이름',
+            last_name: '성',
+            email: '이메일',
+            gender: '성별'
+        }
+
         function createTr(obj) {
 
             let trTag = document.createElement('tr');
@@ -56,16 +65,15 @@
             trTag.onmouseout = function () {
                 this.style.backgroundColor = '';
             }
+
             let td = document.createElement('td');
             let chk = document.createElement('input');
             chk.setAttribute('type', 'checkbox');
+            chk.onchange = allCheck;
             td.appendChild(chk);
             trTag.appendChild(td);
 
-            for (field in obj) {
-                if(field == "ip_address") {
-                    break;
-                }
+            for (field in titles) {
                 let tdTag = document.createElement('td');
                 let text = document.createTextNode(obj[field]);
                 tdTag.appendChild(text);
@@ -73,33 +81,71 @@
             }
             td = document.createElement('td');
             let btn = document.createElement('button');
-            btn.innerHTML = 'OK';
-            btn.onclick = clickFnc;
+            btn.innerHTML = 'Del';
+            btn.onclick = delFunc;
             td.appendChild(btn);
             trTag.appendChild(td);
             return trTag;
         }
+
         let tbl = document.getElementById('tbl');
 
         let tr = document.createElement('tr');
+        let th;
         tbl.appendChild(tr);
-        for (field in data[0]) {
-            if(field == "ip_address") {
-                break;
-            }
-            let tdTag = document.createElement('td');
-            let text = document.createTextNode(field);
-            tdTag.appendChild(text);
-            tr.appendChild(tdTag);
+
+        th = document.createElement('th');
+        let chk = document.createElement('input');
+        chk.setAttribute('type', 'checkbox');
+        chk.onchange = allCheck;
+        th.appendChild(chk);
+        tr.appendChild(th);
+
+        for (field in titles) {
+            th = document.createElement('th');
+            let text = document.createTextNode(titles[field]);
+            th.appendChild(text);
+            tr.appendChild(th);
         }
+        th = document.createElement('th');
+        let btn = document.createElement('button');
+        btn.innerHTML = 'Selected Del';
+        btn.onclick = delSelected;
+        th.appendChild(btn);
+        tr.appendChild(th);
 
         data.forEach(function (val, idx, ary) {
             let newTr = createTr(val);
             tbl.appendChild(newTr);
         });
 
-        function clickFnc() {
+        function delFunc() {
             this.parentNode.parentNode.remove();
+        }
+
+        function delSelected() {
+            let checkedAll = document.querySelectorAll('td>input[type="checkbox"]:checked');
+            // checks.forEach(c => c.checked ? c.parentNode.parentNode.remove(): c);
+            for(let i = 0; i < checkedAll.length; i++) {
+                checkedAll[i].parentNode.parentNode.remove();                
+            }
+        }
+
+        function allCheck() {
+            let tChk = document.querySelector('th>input[type="checkbox"]');
+            let checks = document.querySelectorAll('td>input[type="checkbox"]');
+            let checkedAll = document.querySelectorAll('td>input[type="checkbox"]:checked');
+            
+            if(this == tChk) {
+                for(let i = 0; i < checks.length; i++) {
+                    checks[i].checked = tChk.checked;
+                }
+            } else if(!this.checked){
+                tChk.checked = false;
+            } else if(checks.length == checkedAll.length) {
+                tChk.checked = true;
+            }
+
         }
 
     </script>
