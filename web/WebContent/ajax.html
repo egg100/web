@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax.html</title>
+</head>
+<body>
+    <!-- Asynchronous JavaScript And Xml -->
+    <p id="showCD"></p>
+    <table id="tbl" border="1"></table>
+    <!-- <script src="javascript/ajax.js"></script> -->
+    <!-- <script src="javascript/ajax2.js"></script> -->
+    <script>
+        let xhtp = new XMLHttpRequest();
+        let table;
+        let rows;
+console.log('1');
+        xhtp.onreadystatechange = function() {
+            if(xhtp.readyState == 4 && xhtp.status == 200) {
+console.log('2');
+                let doc = xhtp.responseXML;
+                rows = doc.getElementsByTagName('CD');
+                table = '<tr><th>Artist</th><th>Title</th></tr>';
+                for(let i = 0; i < rows.length; i++) {
+                    table += '<tr onclick = displayCD(' + i + ')><td>' + 
+                        rows[i].getElementsByTagName('ARTIST')[0].innerHTML + '</td><td>' +
+                        rows[i].getElementsByTagName('TITLE')[0].innerHTML + '</td></tr>';
+                    
+                }
+                document.getElementById('tbl').innerHTML = table;
+                console.log(doc);
+            }
+        };
+        xhtp.open('get', 'cd_catalog.xml', false);
+        xhtp.send();
+console.log('3');
+        function displayCD(i) {
+            let row = 
+                'Artist: ' + rows[i].getElementsByTagName('ARTIST')[0].innerHTML + '<br>' +
+                'Title: ' + rows[i].getElementsByTagName('TITLE')[0].innerHTML + '<br>' +
+                'Year: ' + rows[i].getElementsByTagName('YEAR')[0].innerHTML;
+            document.getElementById('showCD').innerHTML = row;
+        }
+    </script>
+</body>
+</html>
