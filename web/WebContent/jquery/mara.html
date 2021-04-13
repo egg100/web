@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>mara</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		let ingredient =[
+			'마라소스', '와인', '청경채', '분모자', '중국당면',
+			'산초', '배추', '소고기', '양고기', '건두부', '버섯'
+		];
+		let box = $('<div />');
+		for(i in ingredient) {
+			let pTag = $('<p />');
+			let inputTag = $('<input type="checkbox"/>').attr('name',ingredient[i]);
+			pTag.append(inputTag);
+			pTag.append(ingredient[i]);
+			box.append(pTag);
+		}
+		box.append($('<input type="button"/>').attr('value','요리 시작').click(cook));
+		$('body').append(box);
+
+		function cook() {
+			let checked = $('input[type="checkbox"]:checked');
+			let values = [];
+			for(let i = 0; i < checked.length; i++) {
+				values[i] = checked[i].name;
+			}
+			console.log(checked);
+			if($.inArray('마라소스',values) != -1 && $.inArray('와인',values) == -1) {
+				alert(values.join(' ') + '가 들어간 마라탕 완성');
+			} else {
+				alert('이것은 마라탕이 아니다');
+			}
+		}
+	</script>
+</body>
+</html>
