@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        let xhtp = new XMLHttpRequest();
+        let list;
+        let rows;
+        xhtp.onreadystatechange = function() {
+            if(xhtp.readyState == 4 && xhtp.status == 200) {
+                let doc = xhtp.responseXML;
+                rows = doc.getElementsByTagName('record');
+
+                list = '<h2>employees</h2>';
+                for(let i = 0; i < rows.length; i++) {
+                    list += '<ul><li>사원번호: ' + rows[i].getElementsByTagName('emp_id')[0].innerHTML + '</li>' +
+                            '<li>이름: ' + rows[i].getElementsByTagName('first_name')[0].innerHTML + '</li>' +
+                            '<li> 연락처: ' + rows[i].getElementsByTagName('phone_number')[0].innerHTML + '</li></ul><br>';
+                                
+                }
+            document.getElementsByTagName('body')[0].innerHTML = list;
+            }
+        };
+        xhtp.open('get', 'employees.xml', false);
+        xhtp.send();
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 900px;
+        }
+        header {
+            border-bottom: 1px solid rgb(199, 199, 199);
+        }
+        h2 {
+            display: inline-block;
+            position: relative;
+        }
+        span.mint {
+        	color: mediumaquamarine;
+        }
+        section {
+            padding-top: 60px;
+        }
+
+        label {
+            font-weight: bold;
+            position: absolute;
+            left: -200px;
+        }
+        div {
+            padding: 10px 0;
+            position: relative;
+            left: 200px;
+            min-height: 10px;
+        }
+        input {
+            height: 30px;
+        }
+        input[type=button] {
+            display: block;
+        	height: 50px;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            background-color: mediumaquamarine;
+            border-width: 0;
+            
+        }
+        input[type=button]:hover {
+            background-color: rgb(50, 161, 158);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>정보입력</h2>
+    </header>
+    <section>
+    <form action="">
+        <div>
+            <label>이름</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label>나이</label>
+            <input type="text" name="age">
+        </div>
+        <div>
+            <label>휴대전화</label>
+            <input type="text" name="phone1">
+            -
+            <input type="text" name="phone2">
+            -
+            <input type="text" name="phone3">
+        </div>
+        <input type="button" id="btn" value="등록" onclick="saveData()">
+    </form>
+    </section>
+
+    <script>
+        let data = [];
+        function saveData() {
+            let name = document.getElementsByName('name')[0];
+            let age = document.getElementsByName('age')[0];
+            let phone1 = document.getElementsByName('phone1')[0];
+            let phone2 = document.getElementsByName('phone2')[0];
+            let phone3 = document.getElementsByName('phone3')[0];
+            
+            data.push({
+                name : name.value,
+                age : age.value,
+                phone : phone1.value + '-' + phone2.value + '-' + phone3.value
+            });
+            console.log(data);
+
+            name.value = '';
+            age.value = '';
+            phone1.value = '';
+            phone2.value = '';
+            phone3.value = '';
+        }
+
+    </script>
+</body>
+</html>

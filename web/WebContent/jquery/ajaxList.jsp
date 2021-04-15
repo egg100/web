@@ -14,6 +14,7 @@
 		result += "{\"boardNo\":\""+list.get(i).getBoardNo() +"\","
 	               + "\"title\":\""+list.get(i).getTitle()+"\","
 	               + "\"content\":\""+list.get(i).getContent().trim()+"\","
+				   + "\"creationDate\":\""+list.get(i).getCreationDate()+"\","
 	               + "\"writer\":\""+list.get(i).getWriter()+"\"}";
 	    result += (i == list.size() -1 ? "" : "," );
 	}

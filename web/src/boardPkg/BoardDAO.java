@@ -113,6 +113,39 @@ public class BoardDAO {
 		}
 	}
 	
+	//입력 후 결과 반환.
+	public Board insertBoardResult(Board board) {
+		conn = DBCon.getConnection();
+		sql = "insert into board values(" 
+		+ board.getBoardNo() 
+		+ ", '" + board.getTitle() + "'" 
+		+ ", '" + board.getContent() + "'" 
+		+ ", '" + board.getWriter() + "'"
+		+ ", sysdate)";
+		String sql1 = "select * from board where board_no =" + board.getBoardNo();
+		Board returnVal = new Board();
+		try {
+			stmt = conn.createStatement();
+			int r = stmt.executeUpdate(sql); // 업데이트한 갯수만큼 숫자리턴
+			System.out.println(r + "건 입력되었습니다.");
+			
+			rs = stmt.executeQuery(sql1);
+			if(rs.next()) {
+				returnVal.setBoardNo(rs.getInt("board_no"));
+				returnVal.setContent(rs.getString("content"));
+				returnVal.setCreationDate(rs.getString("creation_date"));
+				returnVal.setTitle(rs.getString("title"));
+				returnVal.setWriter(rs.getString("writer"));
+				return returnVal;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return null;
+	}
+	
 	//수정
 	public void updateBoard(Board board) {
 		conn = DBCon.getConnection();

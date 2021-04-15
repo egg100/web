@@ -15,7 +15,7 @@
 				//let data = JSON.parse(result);
 				console.log(result);
 				
-				let tbl = $('<table border="1"/>');
+				let tbl = $('<table id="tbl" border="1"/>');
 				let trTag;
 				for(data of result) {
 					trTag = $('<tr />');
@@ -23,8 +23,9 @@
 						$('<td />').html(data.boardNo),
 						$('<td />').html(data.title),
 						$('<td />').html(data.content),
-						$('<td />').html(data.writer),						
-						$('<td />').html($('<button />').html('삭제'))							
+						$('<td />').html(data.writer),					
+						$('<td />').html(data.creationDate),					
+						$('<td />').html($('<button />').html('삭제').click(deleteList))							
 					);
 					tbl.append(trTag);
 				}
@@ -36,7 +37,24 @@
 		});
 		
 		function deleteList() {
-			
+			//let boardNo = this.parentNode.parentNode.children[0].innerHTML;
+			let row = $(this).parent().parent();
+			let no = row.children().eq(0).html();
+			console.log(no);
+			$.ajax({
+				url : 'ajax.jsp',
+				data : {
+					boardNo : no,
+				 	del : 't'
+				},
+				success : function() {
+					row.remove();
+				},
+				error : function(r) {
+					console.log(r);
+				}
+				
+			})
 		}
 
 		// let query = 'boardNo=4&title=test&content=test&writer=user1';
@@ -62,6 +80,17 @@
 					$('textarea[name="content"]').val('');
 					$('input[name="writer"]').val('');
 					
+					//테이블의 제일 마지막 위치에 tr생성한 후 append.
+					let $tr = $('<tr />').append(
+						$('<td />').html(result.boardNo),		
+						$('<td />').html(result.title),		
+						$('<td />').html(result.content),		
+						$('<td />').html(result.writer),		
+						$('<td />').html(result.creationDate),
+						$('<td />').html($('<button />').html('삭제'))
+					);
+					$('#tbl').append($tr);
+					
 				}
 			});
 		});
@@ -75,8 +104,8 @@
 		<div>내용: <textarea name="content" cols="30" rows="10">
 		</textarea></div>
 		<div>작성자: <input type="text" name="writer"></div>
-		<div><input type="submit" value="Send"></div>
-		<div><input type="reset" value="Cancel"></div>
+		<div><input type="submit" value="Send">
+		<input type="reset" value="Cancel"></div>
 	</form>
 
 	<div id="show"></div>
